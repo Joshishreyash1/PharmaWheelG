@@ -1,0 +1,39 @@
+<div class="container-fluid">
+    <div class="row mt-1 py-2 text-light bg-primary">
+        <span class="fs-5 cursor" routerLink="/medicine"><i class="bi bi-arrow-left me-4 ms-2 fs-4 mt-1"></i>Top Deal</span>
+    </div>
+    <div class="row container py-3 bg-primary bg-opacity-10 text-center bg-info">
+        <span class="fs-5 ">Showing Medicine Availability and Price in </span>
+    </div>
+
+    <div class="container mt-2">
+        <h3 class="fw-300">Shop By Catagories</h3>
+        <div class="row" *ngFor="let product of topDealsByCatagory">
+            <div class="col-md-2 my-3" >
+                <div class="card" style="width: 15rem; height: 22rem;">
+                    <div class="card-body d-flex align-items-center justify-content-center flex-column">
+                        <h5 class="card-title">{{product.categoryName}}</h5>
+                        <p class="card-text"><a class="fs-5 text-decoration-none" href="">View All</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 my-3 mx-5" *ngFor="let deal of product.top_deals">
+                <div class="card" style="width: 15rem; height: 22rem;">
+                    <div class="card-body d-flex align-items-center justify-content-center flex-column">
+                        <img [src]="deal.productImageSlug[0]" [alt]="" [title]="deal.descriptionString" height="180"
+                        width="200" class="border border-2">
+                    <div class="card-body" style="width: 15rem; height: 22rem;">
+                        <h5 class="card-title text-desc" [title]="deal.description">{{deal.description}} </h5>
+                        <p class="card-text text-muted">{{deal.type}}</p>
+                        <p><span class="text-muted">MRP</span><span><del>₹
+                                    &nbsp;{{deal.discountPrice}}</del></span>&nbsp;<br><span>₹ &nbsp;
+                                {{deal.actualPrice}}</span>
+                            <button type="button" class="btn btn-outline-primary rounded-pill ms-3 ">ADD</button>
+                        </p>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
